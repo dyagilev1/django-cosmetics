@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Brand, Review, Contact
+from .models import Category, Product, Brand, Review
 
 
 @admin.register(Category)
@@ -25,7 +25,3 @@ class BrandAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email','review_text')
 
-
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email','message')

@@ -55,12 +55,6 @@ class Product(models.Model):
         return reverse("shop:product_detail", kwargs={"id": self.id, "slug": self.slug})
     
 
-class Contact(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    message = models.CharField(max_length=500)
-
 class Review(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)

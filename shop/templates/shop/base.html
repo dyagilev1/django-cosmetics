@@ -20,15 +20,9 @@
             <a href="{% url 'cart:cart_detail' %}" id="essenceCartBtn"><img src="{% static 'img/cart.png' %}" alt=""> <span>{{ total_items }}</span></a>
         {% endwith %}
     </div>
-    <div id="search-area">
-        <form class="form-inline my-2 my-lg-0 border" action="{% url 'shop:search_product'%}" method="GET">
-            <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Пошук" name="Q">
-        </form>
-    </div>
 </div>
 <div id="subheader">
     <a class="subheader_item" href="{% url 'shop:product_list' %}">Магазин</a>
-    <a class="subheader_item" href="{% url 'shop:contact' %}">Контакти</a>
     <a class="subheader_item" href="{% url 'shop:review' %}">Відгуки</a>
 </div>
 
