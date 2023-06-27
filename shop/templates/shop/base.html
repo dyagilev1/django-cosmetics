@@ -15,10 +15,16 @@
     <div id="header">
         <a href="/" class="logo">Beauty Boutique</a>
     </div>
+    
     <div id="cart-area">
         {% with total_items=cart|length %}
             <a href="{% url 'cart:cart_detail' %}" id="essenceCartBtn"><img src="{% static 'img/cart.png' %}" alt=""> <span>{{ total_items }}</span></a>
         {% endwith %}
+    </div>
+    <div id="search-area">
+        <form class="form-inline my-2 my-lg-0 border" action="{% url 'shop:search_product'%}" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Пошук" name="Q">
+        </form>
     </div>
 </div>
 <div id="subheader">

@@ -40,8 +40,6 @@ def product_detail(request, id, slug):
         'cart_product_form': cart_product_form,
     })
 
-
-
 def review(request):
     reviews = Review.objects.all()
     review_form = ReviewForm()
@@ -67,3 +65,31 @@ def review(request):
         form = ReviewForm()
 
     return render(request, "shop/product/review.html", {'form':form, 'reviews':reviews})
+
+def search_product(request):
+
+    brand = Brand.objects.all()
+    brandID = request.GET.get('brand') 
+
+    category = None
+    categories = Category.objects.all()
+
+    if brandID:
+        products = Product.objects.filter(brand = brandID)
+    else:
+        Product.objects.all() 
+        
+    query = request.GET.get("Q")
+    products = Product.objects.filter(name__icontains=query)
+
+
+    
+
+    return render(request, 'shop/product/search.html', context={'products': products,
+                                                                'query': query,
+                                                                'category': category,
+                                                                'categories': categories,
+                                                                'brand': brand,                                                            
+                                                                })
+
+
