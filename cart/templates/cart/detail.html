@@ -7,7 +7,7 @@
 
 {% with total_items=cart|length %}
     {% if total_items > 0%}
-        <div class="cart__info container-fluid pt-5">
+        <div class="cart__info container-fluid pt-5 pb-5">
             <div class="row px-xl-5">
                 <div class="col-lg-8 table-responsive mb-5">
                     <table class="text-center mb-0">
@@ -30,14 +30,14 @@
                                             {{ item.update_quantity_form.override }}
                                         </td>
                                         <td class="align-middle bg-white">
-                                            <button type="submit" class="btn btn-secondary btn-sm" value="Update">Оновити</button>
+                                            <button type="submit" class="btn btn-dark btn-sm" value="Update">Оновити</button>
                                             {% csrf_token %}
                                         </td>
                                         </form>
                                         <td class="align-middle bg-white">{{ item.total_price }} грн</td>
                                         <td class="align-middle bg-white">
                                             <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                                                <button type="submit" class="btn btn-secondary btn-sm" value="delete">Видалити</button>
+                                                <button type="submit" class="btn btn-dark btn-sm" value="delete">Видалити</button>
                                                 {% csrf_token %}
                                             </form>
                                         </td>
@@ -69,7 +69,7 @@
                             </div>
                             {% with total_items=cart|length %}
                                 {% if total_items > 0%}
-                                    <a href="{% url 'orders:order_create' %}" class="btn btn-block btn-secondary my-3 py-3">Зробити оформлення</a>
+                                    <a href="{% url 'orders:order_create' %}" class="btn btn-block btn-dark my-3 py-3">Зробити оформлення</a>
                                 {% endif %}
                             {% endwith %}
                         </div>
@@ -78,12 +78,12 @@
             </div>
         </div>
     {% else %}
-        <div class="empty_cart container-fluid p-5 border-top border-bottom">
+        <div class="empty_cart container-fluid p-5 border-top border-bottom"> 
             <div class="d-flex justify-content-center pb-2">
-                <h5>Кошик порожній</h5>
+                <h5>Ваш кошик порожній.</h5>
             </div>
             <div class="d-flex justify-content-center">
-                <a href="{% url 'shop:product_list' %}" class="btn btn-secondary">Продовжити перегляд</a>
+                <a href="{% url 'shop:product_list' %}" class="btn btn-dark">Продовжити перегляд</a>
             </div>
         </div>
     {% endif %}
