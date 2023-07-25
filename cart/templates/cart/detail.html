@@ -3,8 +3,8 @@
 
 {% block title %}Корзина{% endblock title %}
 
-{% block content %}
-
+{% block cart %}
+<div class="bg-light">
 {% with total_items=cart|length %}
     {% if total_items > 0%}
         <div class="cart__info container-fluid pt-5 pb-5">
@@ -12,7 +12,7 @@
                 <div class="col-lg-8 table-responsive mb-5">
                     <table class="text-center mb-0">
                         <tbody class="align-middle ">
-                            <h6>Кошик</h6>
+                            <h4>Кошик</h4>
                             {% for item in cart %}
                                 {% with product=item.product %}
                                     <tr class="border-bottom border-top">
@@ -30,14 +30,14 @@
                                             {{ item.update_quantity_form.override }}
                                         </td>
                                         <td class="align-middle bg-white">
-                                            <button type="submit" class="btn btn-dark btn-sm" value="Update">Оновити</button>
+                                            <button type="submit" class="btn btn-dark btn-sm" value="Update"><i class="fa-solid fa-rotate-right"></i></button>
                                             {% csrf_token %}
                                         </td>
                                         </form>
                                         <td class="align-middle bg-white">{{ item.total_price }} грн</td>
                                         <td class="align-middle bg-white">
                                             <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                                                <button type="submit" class="btn btn-dark btn-sm" value="delete">Видалити</button>
+                                                <button type="submit" class="btn btn-dark btn-sm" value="delete"><i class="fa-solid fa-x"></i></button>
                                                 {% csrf_token %}
                                             </form>
                                         </td>
@@ -49,10 +49,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="mb-5 ml-2">
-                        <div class=" bg-white">
-                            <h6 class="font-weight-semi-bold p-1  border-bottom">Дані замовлення</h6>
-                        </div>
                         <div class="card-body bg-white">
+                            <h6 class="font-weight-semi-bold p-1  border-bottom">Дані замовлення</h6>
                             <div class="d-flex justify-content-between mb-3 pt-1">
                                 <h6 class="font-weight-medium">Сума</h6>
                                 <h6 class="font-weight-medium">{{ cart.get_total_price }} грн</h6>
@@ -88,5 +86,5 @@
         </div>
     {% endif %}
 {% endwith %}
- 
-{% endblock content %}
+ </div>
+{% endblock cart %}

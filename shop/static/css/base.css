@@ -376,3 +376,12 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+
+.header-container {
+	background: #04a081;
+}
+.header-top {
+	border-bottom: 1px dotted #1abc9c;
+	padding: 0px 0px 6px 0px;
+}

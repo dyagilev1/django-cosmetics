@@ -7,11 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Beauty Boutique{% endblock title %}</title>
+
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
-<div class="header__main">
+{% comment %} <div class="header-container">
+    <h6>HELLO</h6>
+
+    <div class="header__main">
     <div id="header">
         <a href="/" class="logo">Beauty Boutique</a>
     </div>
@@ -27,14 +45,135 @@
         </form>
     </div>
 </div>
+</div>
 <div id="subheader">
     <a class="subheader_item" href="{% url 'shop:product_list' %}">Магазин</a>
     <a class="subheader_item" href="{% url 'shop:review' %}">Відгуки</a>
 </div>
+ {% endcomment %}
+
+
+<div>
+    <header class="header">
+      <div class="bg-dark py-1">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+              <div class="d-flex justify-content-center text-center">
+                <h6 class="fs-14 text-uppercase text-center text-white mx-5"> Безкоштовна доставка та повернення</h6>
+                <h6 class="fs-14 text-uppercase text-center text-white mx-5"> 2 роки гарантії</h6>
+                <h6 class="fs-14 text-uppercase text-center text-white mx-5"> 30-денна гарантія повернення грошей</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+           <a href="/" class="navbar-brand order-1 order-lg-2">Beauty Boutique</a>
+          <div class="collapse navbar-collapse order-4 order-lg-1" id="navbarMenu">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown dropdown-sm dropdown-hover">
+                <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item dropdown dropdown-lg dropdown-hover">
+                <a class="nav-link dropdown-toggle" href="{% url 'shop:product_list' %}" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Магазин
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'shop:review' %}">
+                  Відгуки
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="collapse navbar-collapse order-5 order-lg-3" id="navbarMenu2">
+            <ul class="navbar-nav ml-auto position-relative">
+
+              <!-- search -->
+              <li class="nav-item dropdown dropdown-md dropdown-hover">
+                <a class="nav-icon dropdown-toggle" id="navbarDropdown-4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span class="d-inline-block d-lg-none">Search</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown-4">
+                  <div class="form-group">
+                    <form class="form-inline my-2 my-lg-0 border" action="{% url 'shop:search_product'%}" method="GET">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Пошук" name="Q">
+                    </form>
+                  </div>
+                </div>
+              </li>
+
+              <!-- cart -->
+              {% with total_items=cart|length %}  
+                  <a href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping pt-3 pl-1"></i><span>{{ total_items }}</span></a>
+              {% endwith %}
+            </ul>
+          </div>
+
+          <div class="order-2 d-flex d-lg-none" id="navbarMenuMobile">
+            <ul class="navbar-nav navbar-nav--icons ml-auto position-relative">
+
+              <!-- search -->
+              <li class="nav-item">
+                <a href="" class="nav-icon"><i class="icon-search"></i></a>
+              </li>
+
+              <!-- cart -->
+              <li class="nav-item dropdown dropdown-md dropdown-hover">
+                <a href="" class="nav-icon"><i class="icon-shopping-bag"></i></a>
+              </li>
+
+              <!-- menu -->
+              <li class="nav-item dropdown dropdown-md dropdown-hover">
+                <a href="" class="nav-icon" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="icon-menu"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+</div>
+
+   
+
+
+
+
+
+
+
+
 
 <div id="content">
     {% block content %}
     {% endblock content %}
+</div>
+<div >
+    {% block cart %}
+    {% endblock cart %}
+</div>
+<div >
+    {% block detail %}
+    {% endblock  %}
+</div>
+<div >
+    {% block review %}
+    {% endblock  %}
+</div>
+<div >
+    {% block list %}
+    {% endblock  %}
+</div>
+<div >
+    {% block create %}
+    {% endblock  %}
 </div>
 
 
